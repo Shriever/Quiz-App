@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 // import { Score, Quote, Answer, Question } from "../components/";
 import Score from "../components/Score";
 import Quote from "../components/Quote";
@@ -8,8 +8,8 @@ import Question from "../components/Question";
 
 const IndexPage = () => {
   return (
-    <Grid container>
-      <Score />
+    <Container>
+      <Score playerScore={300} />
       <Grid container>
         <Grid item xs={6}>
           <Question />
@@ -19,7 +19,7 @@ const IndexPage = () => {
         </Grid>
       </Grid>
       <Quote />
-    </Grid>
+    </Container>
   );
 };
 
