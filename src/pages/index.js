@@ -6,6 +6,11 @@ import Quote from "../components/Quote";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
 
+// LINKS TO APIS FOR THIS PROJECT
+// https://jservice.io/api/random 
+// https://api.chucknorris.io/jokes/random
+
+
 const IndexPage = () => {
   return (
     <Container>
