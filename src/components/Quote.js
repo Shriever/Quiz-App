@@ -2,16 +2,13 @@ import React from "react";
 import { Button, Container, Grid, Typography } from "@material-ui/core";
 
 const Quote = ({ isCorrectAnswer, displayNextQuestion, quote }) => {
-  const handleClick = () => {
-    displayNextQuestion();
-  };
   if (isCorrectAnswer) {
     return (
       <Grid container justifyContent='center' alignItems='center' spacing={3}>
         <Grid item>
           <Grid container direction='column'>
             <Grid item>
-              <Typography variant='h4' align='center'>
+              <Typography fontWeightLight variant='h4' align='center'>
                 Great Job!
               </Typography>
             </Grid>
@@ -33,7 +30,7 @@ const Quote = ({ isCorrectAnswer, displayNextQuestion, quote }) => {
   }
 
   return (
-    <Grid container justifyContent='center' spacing={3} alignItems="center">
+    <Grid container justifyContent='center' spacing={3} alignItems='center'>
       <Grid item>
         <Typography>oops, no chuck norris for you :(</Typography>
       </Grid>

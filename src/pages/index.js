@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Container, Grid, createTheme } from "@material-ui/core";
 import Score from "../components/Score";
 import Quote from "../components/Quote";
 import Answer from "../components/Answer";
@@ -10,9 +10,21 @@ import AnswerPrompt from "../components/AnswerPrompt";
 // https://jservice.io/api/random
 // https://api.chucknorris.io/jokes/random
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#9575cd",
+    },
+    secondary: {
+      main: "#1b5e20",
+    },
+  },
+});
+
 const IndexPage = () => {
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(null);
   const [quote, setQuote] = useState("Chuck Norris is really cool.");
+  const [questionText, setQuestionText] = useState("Who is this?");
 
   const handleAnswer = res => {
     setIsCorrectAnswer(res);
@@ -23,24 +35,40 @@ const IndexPage = () => {
   };
 
   return (
-    <Grid container justifyContent='center'>
-      <Score playerScore={300} />
+    <Container theme={theme}>
+      <Grid container justifyContent='center'>
+        <Score playerScore={300} />
 
-      <Grid container justifyContent='space-around'>
-        <Question />
-        <Answer />
+        <Grid
+          style={{ marginBottom: "3rem" }}
+          container
+          alignItems='center'
+          justifyContent='center'
+          spacing={3}
+        >
+          <Grid item xs={6}>
+            <Question
+              questionText={questionText}
+              style={{ background: theme.palette.primary.main }}
+            />
+          </Grid>
+
+          <Grid item xs={6}>
+            <Answer />
+          </Grid>
+        </Grid>
+
+        {isCorrectAnswer === null ? (
+          <AnswerPrompt handleAnswer={handleAnswer} />
+        ) : (
+          <Quote
+            isCorrectAnswer={isCorrectAnswer}
+            displayNextQuestion={displayNextQuestion}
+            quote={quote}
+          />
+        )}
       </Grid>
-
-      {isCorrectAnswer === null ? (
-        <AnswerPrompt handleAnswer={handleAnswer} />
-      ) : (
-        <Quote
-          isCorrectAnswer={isCorrectAnswer}
-          displayNextQuestion={displayNextQuestion}
-          quote={quote}
-        />
-      )}
-    </Grid>
+    </Container>
   );
 };
 
