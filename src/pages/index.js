@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+
 import { Container, Grid, createTheme } from "@material-ui/core";
+import { calcNewScore, getNewQuestionAndAnswer } from "../utils/misc";
+
 import Score from "../components/Score";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
-import { calcNewScore, getNewQuestion } from "../utils/misc";
 import Footer from "../components/Footer";
 
 // LINKS TO APIS FOR THIS PROJECT
@@ -30,6 +32,8 @@ const IndexPage = () => {
       text: "Who is this?",
       value: 300,
     },
+    answer: "It's Chuck Norris!",
+    isShowAnswer: false,
   });
 
   const handlePlayerAnswer = isCorrectAnswer => {
@@ -44,16 +48,38 @@ const IndexPage = () => {
 
   const displayNextQuestion = () => {
     setState(prevState => {
+      const { question, answer } = getNewQuestionAndAnswer();
       return {
         ...prevState,
         isCorrectAnswer: null,
-        question: getNewQuestion(),
+        question,
+        answer,
+        isShowAnswer: false,
       };
     });
   };
 
-  const { playerScore, question, quote, isCorrectAnswer } = state;
-  const footerState = { quote, isCorrectAnswer };
+  const handleShowAnswer = () => {
+    setState(prevState => {
+      return { ...prevState, isShowAnswer: true };
+    });
+  };
+
+  const {
+    playerScore,
+    question,
+    quote,
+    isCorrectAnswer,
+    isShowAnswer,
+    answer,
+  } = state;
+  const footerProps = {
+    quote,
+    isCorrectAnswer,
+    displayNextQuestion,
+    handlePlayerAnswer,
+    isShowAnswer,
+  };
   return (
     <Container theme={theme}>
       <Grid container justifyContent='center'>
@@ -75,15 +101,16 @@ const IndexPage = () => {
           </Grid>
 
           <Grid item xs={6}>
-            <Answer />
+            <Answer
+              isShowAnswer={isShowAnswer}
+              answer={answer}
+              style={{ margin: "0 auto" }}
+              handleShowAnswer={handleShowAnswer}
+            />
           </Grid>
         </Grid>
 
-        <Footer
-          state={footerState}
-          displayNextQuestion={displayNextQuestion}
-          handlePlayerAnswer={handlePlayerAnswer}
-        />
+        <Footer {...footerProps} />
       </Grid>
     </Container>
   );

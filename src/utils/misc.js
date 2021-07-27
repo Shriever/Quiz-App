@@ -3,8 +3,10 @@ const calcNewScore = (state, isCorrectAnswer) => {
   return isCorrectAnswer ? playerScore + question.value : playerScore;
 };
 
-const getNewQuestion = () => {
-  return { text: "This is a new question?", value: 500 };
+const getNewQuestionAndAnswer = () => {
+  const question = { text: "This is a new question?", value: 500 };
+  const answer = "It's Chuck Norris!";
+  return { question, answer };
 };
 
-module.exports = { calcNewScore, getNewQuestion };
+module.exports = { calcNewScore, getNewQuestionAndAnswer };
