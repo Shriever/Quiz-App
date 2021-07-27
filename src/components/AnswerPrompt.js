@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
 
-const AnswerPrompt = ({handleAnswer}) => {
+const AnswerPrompt = ({ handlePlayerAnswer }) => {
   const handleClick = res => {
-    handleAnswer(res);
+    handlePlayerAnswer(res);
   };
   return (
     <Grid
@@ -41,4 +41,3 @@ const AnswerPrompt = ({handleAnswer}) => {
 };
 
 export default AnswerPrompt;
-

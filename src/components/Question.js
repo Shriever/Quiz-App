@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Typography } from "@material-ui/core";
 
-const Question = ({questionText}) => {
+const Question = ({ questionText, questionValue }) => {
   return (
     <>
-      <Typography variant='h4'>For 500 points:</Typography>
+      <Typography variant='h4'>For {questionValue} points:</Typography>
       <br />
-      <Typography variant='h3' align="center">
+      <Typography variant='h3' align='center'>
         {questionText}
       </Typography>
     </>
