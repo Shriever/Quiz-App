@@ -4,7 +4,7 @@ import { Button, Typography } from "@material-ui/core";
 const Answer = ({ isShowAnswer, handleShowAnswer, answer }) => {
   if (!isShowAnswer) {
     return (
-      <Button variant='contained' color='primary' onClick={handleShowAnswer}>
+      <Button size="large" variant='contained' color='primary' onClick={handleShowAnswer}>
         Show Answer
       </Button>
     );

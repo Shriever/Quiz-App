@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-import { Container, Grid, createTheme } from "@material-ui/core";
-import { calcNewScore, getNewQuestionAndAnswer } from "../utils/misc";
+import { Container, Grid } from "@material-ui/core";
+import { calcNewScore } from "../utils/misc";
+import useStyles from "./../utils/styles";
 
 import Score from "../components/Score";
 import Answer from "../components/Answer";
@@ -12,18 +13,8 @@ import Footer from "../components/Footer";
 // https://jservice.io/api/random
 // https://api.chucknorris.io/jokes/random
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#9575cd",
-    },
-    secondary: {
-      main: "#1b5e20",
-    },
-  },
-});
-
 const IndexPage = () => {
+  const classes = useStyles();
   const [state, setState] = useState({
     playerScore: 0,
     isCorrectAnswer: null,
@@ -46,19 +37,6 @@ const IndexPage = () => {
     });
   };
 
-  const displayNextQuestion = () => {
-    setState(prevState => {
-      const { question, answer } = getNewQuestionAndAnswer();
-      return {
-        ...prevState,
-        isCorrectAnswer: null,
-        question,
-        answer,
-        isShowAnswer: false,
-      };
-    });
-  };
-
   const handleShowAnswer = () => {
     setState(prevState => {
       return { ...prevState, isShowAnswer: true };
@@ -76,31 +54,30 @@ const IndexPage = () => {
   const footerProps = {
     quote,
     isCorrectAnswer,
-    displayNextQuestion,
     handlePlayerAnswer,
     isShowAnswer,
+    setState,
   };
   return (
-    <Container theme={theme}>
+    <Container>
       <Grid container justifyContent='center'>
-        <Score playerScore={playerScore} />
+        <Score playerScore={playerScore} scoreClass={classes.score} />
 
         <Grid
           style={{ marginBottom: "3rem" }}
           container
           alignItems='center'
-          justifyContent='center'
-          spacing={3}
+          justifyContent='space-between'
+          spacing={4}
         >
-          <Grid item xs={6}>
+          <Grid item xs={5} className={classes.questionContainer}>
             <Question
               questionText={question.text}
               questionValue={question.value}
-              style={{ background: theme.palette.primary.main }}
             />
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={5} className={classes.answerContainer}>
             <Answer
               isShowAnswer={isShowAnswer}
               answer={answer}

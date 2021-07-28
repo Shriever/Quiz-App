@@ -3,10 +3,10 @@ import Quote from "./Quote";
 import AnswerPrompt from "./AnswerPrompt";
 
 const Footer = props => {
-  const { quote, isCorrectAnswer, handlePlayerAnswer, displayNextQuestion, isShowAnswer } =
+  const { quote, isCorrectAnswer, handlePlayerAnswer, isShowAnswer, setState } =
     props;
 
-  const quoteProps = { isCorrectAnswer, displayNextQuestion, quote };
+  const quoteProps = { isCorrectAnswer, quote, setState };
 
   if (isShowAnswer === false) return <div></div>;
 
