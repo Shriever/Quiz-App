@@ -1,7 +1,7 @@
-import { calcNewScore } from "./misc";
 import getNewQuote from "./getNewQuote";
+import calcNewScore from "./calcNewScore";
 
-const handlePlayerAnswer = async(isCorrectAnswer, setState) => {
+const handlePlayerAnswer = async (isCorrectAnswer, setState) => {
   const newQuote = isCorrectAnswer ? await getNewQuote() : "";
   setState(prevState => {
     return {

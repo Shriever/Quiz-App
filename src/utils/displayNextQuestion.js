@@ -1,4 +1,4 @@
-import { getNewQuestionAndAnswer } from "./misc";
+import getNewQuestionAndAnswer from "./getNewQuestionAndAnswer";
 
 const displayNextQuestion = async setState => {
   const { question, answer } = await getNewQuestionAndAnswer();
