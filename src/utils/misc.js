@@ -3,10 +3,13 @@ const calcNewScore = (state, isCorrectAnswer) => {
   return isCorrectAnswer ? playerScore + question.value : playerScore;
 };
 
-const getNewQuestionAndAnswer = () => {
-  const question = { text: "This is a new question?", value: 500 };
-  const answer = "It's Chuck Norris!";
-  return { question, answer };
+const getNewQuestionAndAnswer = async () => {
+  const res = await fetch("https://jservice.io/api/random");
+  const data = await res.json();
+
+  const { question, answer, value } = data[0];
+
+  return { question: { text: question, value }, answer };
 };
 
 module.exports = { calcNewScore, getNewQuestionAndAnswer };

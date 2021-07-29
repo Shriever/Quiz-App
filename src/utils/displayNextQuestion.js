@@ -1,8 +1,9 @@
 import { getNewQuestionAndAnswer } from "./misc";
 
-const displayNextQuestion = setState => {
+const displayNextQuestion = async setState => {
+  const { question, answer } = await getNewQuestionAndAnswer();
+
   setState(prevState => {
-    const { question, answer } = getNewQuestionAndAnswer();
     return {
       ...prevState,
       isCorrectAnswer: null,

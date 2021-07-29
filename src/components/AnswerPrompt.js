@@ -1,10 +1,8 @@
 import React from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
+import handlePlayerAnswer from "../utils/handlePlayerAnswer";
 
-const AnswerPrompt = ({ handlePlayerAnswer }) => {
-  const handleClick = res => {
-    handlePlayerAnswer(res);
-  };
+const AnswerPrompt = ({ setState }) => {
   return (
     <Grid
       container
@@ -17,7 +15,7 @@ const AnswerPrompt = ({ handlePlayerAnswer }) => {
         <Button
           variant='contained'
           color='primary'
-          onClick={() => handleClick(true)}
+          onClick={() => handlePlayerAnswer(true, setState)}
         >
           Yes
         </Button>
@@ -31,7 +29,7 @@ const AnswerPrompt = ({ handlePlayerAnswer }) => {
         <Button
           variant='contained'
           color='secondary'
-          onClick={() => handleClick(false)}
+          onClick={() => handlePlayerAnswer(false, setState)}
         >
           Nope
         </Button>

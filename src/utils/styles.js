@@ -2,19 +2,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   score: {
-    marginBottom: theme.spacing(9),
+    marginBottom: '2rem',
   },
   answerContainer: {
+    paddingTop: "6rem",
     textAlign: "center",
     backgroundColor: theme.palette.grey[300],
     borderRadius: "5px",
     height: "100%",
     "& button": {
-      marginTop: theme.spacing(4.25),
+      marginTop: theme.spacing(5),
     },
   },
   questionContainer: {
     backgroundColor: theme.palette.grey[300],
+    borderRadius: "5px",
   },
 }));
 
