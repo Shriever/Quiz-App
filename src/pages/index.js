@@ -9,6 +9,8 @@ import Question from "../components/Question";
 import Footer from "../components/Footer";
 import displayNextQuestion from "../utils/displayNextQuestion";
 import initialState from "../utils/initialState";
+// import favicon from "../images/icons8-puzzle-48.png";
+import favicon from "../images/puzzle-icon.png";
 
 const IndexPage = () => {
   const [state, setState] = useState(initialState);
@@ -40,6 +42,7 @@ const IndexPage = () => {
       <Helmet>
         <meta charSet='utf-8' />
         <title>Levi's Quiz App</title>
+        <link rel='icon' type='image/png' size='16x16' href={favicon} />
       </Helmet>
 
       <Grid container justifyContent='center'>
