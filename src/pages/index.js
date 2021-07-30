@@ -8,6 +8,7 @@ import Answer from "../components/Answer";
 import Question from "../components/Question";
 import Footer from "../components/Footer";
 import displayNextQuestion from "../utils/displayNextQuestion";
+import { Helmet } from "react-helmet";
 
 // LINKS TO APIS FOR THIS PROJECT
 // https://jservice.io/api/random
@@ -49,11 +50,15 @@ const IndexPage = () => {
 
   return (
     <Container>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Levi's Quiz App</title>
+      </Helmet>
       <Grid container justifyContent='center'>
         <Score playerScore={playerScore} scoreClass={classes.score} />
 
         <Grid
-          style={{ marginTop: '1rem' ,  marginBottom: "3rem" }}
+          style={{ marginTop: "1rem", marginBottom: "3rem" }}
           container
           alignItems='center'
           justifyContent='space-between'

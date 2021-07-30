@@ -7,9 +7,9 @@ const displayNextQuestion = async setState => {
     return {
       ...prevState,
       isCorrectAnswer: null,
+      isShowAnswer: false,
       question,
       answer,
-      isShowAnswer: false,
     };
   });
 };
