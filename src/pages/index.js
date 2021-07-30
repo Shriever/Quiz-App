@@ -9,7 +9,6 @@ import Question from "../components/Question";
 import Footer from "../components/Footer";
 import displayNextQuestion from "../utils/displayNextQuestion";
 import initialState from "../utils/initialState";
-// import favicon from "../images/icons8-puzzle-48.png";
 import favicon from "../images/puzzle-icon.png";
 
 const IndexPage = () => {

@@ -4,7 +4,7 @@ const getNewQuestionAndAnswer = async () => {
 
   const { question, answer, value } = data[0];
 
-  return { question: { text: question, value }, answer };
+  return { question: { text: question, value: value || 300 }, answer };
 };
 
 export default getNewQuestionAndAnswer;
