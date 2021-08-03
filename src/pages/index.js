@@ -40,7 +40,7 @@ const IndexPage = () => {
   };
 
   return (
-    <Provider state={state}>
+    <Provider store={store}>
       <Container>
         <Helmet>
           <meta charSet='utf-8' />

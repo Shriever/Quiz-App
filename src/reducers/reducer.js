@@ -1,4 +1,3 @@
-import initialState from "./../utils/initialState";
 import playerResponse from "./playerResponse";
 import showAnswer from "./showAnswer";
 import showNextQuestion from "./showNextQuestion";

@@ -1,15 +1,25 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Button, Typography } from "@material-ui/core";
-import handleShowAnswer from "../utils/handleShowAnswer";
+import { showAnswer } from "../features/question/questionSlice";
 
-const Answer = ({ isShowAnswer, setState, answer }) => {
+const Answer = () => {
+  const dispatch = useDispatch();
+  const { answer, isShowAnswer } = useSelector(state => {
+    const { answer, isShowAnswer } = state.question;
+    return {
+      answer,
+      isShowAnswer,
+    };
+  });
+
   if (!isShowAnswer) {
     return (
       <Button
         size='large'
         variant='contained'
         color='primary'
-        onClick={() => handleShowAnswer(setState)}
+        onClick={() => dispatch(showAnswer())}
       >
         Show Answer
       </Button>
