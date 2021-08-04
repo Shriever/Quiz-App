@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Typography } from "@material-ui/core";
 import { showAnswer } from "../features/question/questionSlice";
 
-const Answer = () => {
+const Answer = ({ answer }) => {
   const dispatch = useDispatch();
-  const { answer, isShowAnswer } = useSelector(state => state.question);
+  const { isShowAnswer } = useSelector(state => state.question);
 
   if (!isShowAnswer) {
     return (

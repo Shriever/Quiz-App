@@ -1,7 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Container, Grid } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
 
 import Score from "../components/Score";
 import Answer from "../components/Answer";
@@ -9,20 +8,18 @@ import Question from "../components/Question";
 import Footer from "../components/Footer";
 
 import useStyles from "../utils/styles";
-
 import favicon from "../images/puzzle-icon.png";
 import { useGetRandomQuestionAndAnswerQuery } from "../services/question";
-import { setNewQuestion } from "../features/question/questionSlice";
 
 const App = () => {
-  const { isShowAnswer } = useSelector(state => state.question);
   const classes = useStyles();
 
-  const dispatch = useDispatch();
-  const { data } = useGetRandomQuestionAndAnswerQuery();
-  if (data) {
-    // dispatch(setNewQuestion(data));
-  }
+  const { data, isLoading } = useGetRandomQuestionAndAnswerQuery();
+  if (isLoading) return <h2>loading...</h2>;
+
+  const { value, answer, question } = data[0];
+
+  const newQuestion = { text: question, value: value || 300 };
 
   return (
     <Container>
@@ -43,11 +40,11 @@ const App = () => {
           spacing={4}
         >
           <Grid item xs={5} className={classes.questionContainer}>
-            <Question />
+            <Question {...newQuestion} />
           </Grid>
 
           <Grid item xs={5} className={classes.answerContainer}>
-            <Answer style={{ margin: "0 auto" }} />
+            <Answer style={{ margin: "0 auto" }} answer={answer} />
           </Grid>
         </Grid>
 
