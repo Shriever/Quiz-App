@@ -2,15 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const questionSlice = createSlice({
   name: "question",
-    initialState: {
-      isCorrectAnswer: null,
-      isShowAnswer: false,
-      question: {
-        text: "",
-        value: 0,
-      },
-      answer: "",
+  initialState: {
+    isCorrectAnswer: null,
+    isShowAnswer: false,
+    question: {
+      text: "",
+      value: 0,
     },
+    answer: "",
+  },
   reducers: {
     showAnswer: state => {
       state.isShowAnswer = true;
@@ -18,8 +18,13 @@ export const questionSlice = createSlice({
     showNextQuestion: state => {
       state.isShowAnswer = false;
       state.isCorrectAnswer = null;
+    },
+    setNewQuestion: (state, action) => {
+      const questionData = action.payload[0];
+      const { value, question, answer } = questionData;
 
-      // TODO get new question and answer
+      state.question = { text: question, value };
+      state.answer = answer;
     },
     playerResponded: (state, action) => {
       state.isCorrectAnswer = action.payload;
@@ -28,6 +33,7 @@ export const questionSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { showAnswer, showNextQuestion, playerResponded } = questionSlice.actions;
+export const { showAnswer, showNextQuestion, playerResponded, setNewQuestion } =
+  questionSlice.actions;
 
 export default questionSlice.reducer;

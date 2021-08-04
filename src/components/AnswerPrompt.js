@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
-import handlePlayerAnswer from "../utils/handlePlayerAnswer";
+import { useDispatch } from "react-redux";
+import { playerResponded } from "../features/question/questionSlice";
 
-const AnswerPrompt = ({ setState }) => {
+const AnswerPrompt = () => {
+  const dispatch = useDispatch();
+
   return (
     <Grid
       container
@@ -15,7 +18,7 @@ const AnswerPrompt = ({ setState }) => {
         <Button
           variant='contained'
           color='primary'
-          onClick={() => handlePlayerAnswer(true, setState)}
+          onClick={() => dispatch(playerResponded(true))}
         >
           Yes
         </Button>
@@ -29,7 +32,7 @@ const AnswerPrompt = ({ setState }) => {
         <Button
           variant='contained'
           color='secondary'
-          onClick={() => handlePlayerAnswer(false, setState)}
+          onClick={() => dispatch(playerResponded(false))}
         >
           Nope
         </Button>

@@ -2,13 +2,16 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import displayNextQuestion from "../utils/displayNextQuestion";
+import { useDispatch } from "react-redux";
+import { showNextQuestion } from "../features/question/questionSlice";
 
-const NextQuestionButton = ({ setState }) => {
+const NextQuestionButton = () => {
+  const dispatch = useDispatch();
   return (
     <Button
       variant='contained'
       color='primary'
-      onClick={() => displayNextQuestion(setState)}
+      onClick={() => dispatch(showNextQuestion())}
     >
       Next Question
       <ArrowForwardIosIcon fontSize='small' style={{ marginLeft: "3px" }} />

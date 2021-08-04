@@ -5,13 +5,7 @@ import { showAnswer } from "../features/question/questionSlice";
 
 const Answer = () => {
   const dispatch = useDispatch();
-  const { answer, isShowAnswer } = useSelector(state => {
-    const { answer, isShowAnswer } = state.question;
-    return {
-      answer,
-      isShowAnswer,
-    };
-  });
+  const { answer, isShowAnswer } = useSelector(state => state.question);
 
   if (!isShowAnswer) {
     return (

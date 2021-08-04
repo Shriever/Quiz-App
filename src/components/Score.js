@@ -1,7 +1,9 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
-const Score = ({ playerScore, scoreClass }) => {
+const Score = ({ scoreClass }) => {
+  const { playerScore } = useSelector(state => state.playerScore);
   return (
     <Typography
       className={scoreClass}

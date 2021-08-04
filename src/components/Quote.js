@@ -1,8 +1,10 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import NextQuestionButton from "./NextQuestionButton";
+import { useDispatch, useSelector } from "react-redux";
 
-const Quote = ({ isCorrectAnswer, quote, setState }) => {
+const Quote = ({ quote }) => {
+  const { isCorrectAnswer } = useSelector(state => state.question);
   if (isCorrectAnswer) {
     return (
       <Grid container justifyContent='center' alignItems='flex-end' spacing={7}>
@@ -23,7 +25,7 @@ const Quote = ({ isCorrectAnswer, quote, setState }) => {
         </Grid>
 
         <Grid item>
-          <NextQuestionButton setState={setState} />
+          <NextQuestionButton />
         </Grid>
       </Grid>
     );
@@ -35,7 +37,7 @@ const Quote = ({ isCorrectAnswer, quote, setState }) => {
         <Typography>oops, no chuck norris for you :(</Typography>
       </Grid>
       <Grid item>
-        <NextQuestionButton setState={setState} />
+        <NextQuestionButton />
       </Grid>
     </Grid>
   );
