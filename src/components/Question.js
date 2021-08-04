@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const Question = () => {
   const { text, value } = useSelector(state => state.question.question);
+
   return (
     <>
       <Typography variant='h4'>For {value} points:</Typography>

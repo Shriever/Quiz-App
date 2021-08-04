@@ -7,7 +7,8 @@ export const playerScoreSlice = createSlice({
   },
   reducers: {
     addQuestionValueToScore: state => {
-      //   state.playerScore += state.question.value;
+      console.log(state);
+      // state.playerScore += state.question.question.value;
       state.playerScore++;
     },
   },

@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { playerResponded } from "../features/question/questionSlice";
+import { addQuestionValueToScore } from "../features/playerScore/playerScoreSlice";
 
 const AnswerPrompt = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ const AnswerPrompt = () => {
         <Button
           variant='contained'
           color='primary'
-          onClick={() => dispatch(playerResponded(true))}
+          onClick={() => {
+            dispatch(playerResponded(true));
+            dispatch(addQuestionValueToScore());
+          }}
         >
           Yes
         </Button>

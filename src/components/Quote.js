@@ -1,24 +1,28 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import NextQuestionButton from "./NextQuestionButton";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useGetNewQuoteQuery } from "../services/quote";
 
-const Quote = ({ quote }) => {
+const Quote = () => {
   const { isCorrectAnswer } = useSelector(state => state.question);
+  const { data, isLoading } = useGetNewQuoteQuery();
+  if (isLoading) return <p>loading...</p>;
+
   if (isCorrectAnswer) {
     return (
       <Grid container justifyContent='center' alignItems='flex-end' spacing={7}>
         <Grid item>
           <Grid container direction='column'>
             <Grid item>
-              <Typography fontWeightLight variant='h4' align='center'>
+              <Typography fontweightlight variant='h4' align='center'>
                 Great Job!
               </Typography>
               <Typography variant='h5' align='center'>
                 Here's a Chuck Norris quote for you: <br />
               </Typography>
               <Typography variant='h4' align='center'>
-                "{quote}"
+                "{data.value}"
               </Typography>
             </Grid>
           </Grid>

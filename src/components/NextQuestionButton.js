@@ -1,12 +1,12 @@
 import React from "react";
-import { Button } from "@material-ui/core";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import displayNextQuestion from "../utils/displayNextQuestion";
+import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { showNextQuestion } from "../features/question/questionSlice";
 
 const NextQuestionButton = () => {
   const dispatch = useDispatch();
+
   return (
     <Button
       variant='contained'

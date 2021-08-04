@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import { Container, Grid } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Score from "../components/Score";
 import Answer from "../components/Answer";
@@ -9,27 +9,20 @@ import Question from "../components/Question";
 import Footer from "../components/Footer";
 
 import useStyles from "../utils/styles";
-import displayNextQuestion from "../utils/displayNextQuestion";
-import initialState from "../utils/initialState";
+
 import favicon from "../images/puzzle-icon.png";
 import { useGetRandomQuestionAndAnswerQuery } from "../services/question";
 import { setNewQuestion } from "../features/question/questionSlice";
 
 const App = () => {
-  const [state, setState] = useState(initialState);
-
-  useEffect(() => {
-    displayNextQuestion(setState);
-  }, [setState]);
-
+  const { isShowAnswer } = useSelector(state => state.question);
   const classes = useStyles();
 
-  const { data, error, isLoading } = useGetRandomQuestionAndAnswerQuery();
   const dispatch = useDispatch();
+  const { data } = useGetRandomQuestionAndAnswerQuery();
   if (data) {
-    dispatch(setNewQuestion(data));
+    // dispatch(setNewQuestion(data));
   }
-  const { quote } = state;
 
   return (
     <Container>
@@ -58,7 +51,7 @@ const App = () => {
           </Grid>
         </Grid>
 
-        <Footer quote={quote} />
+        <Footer />
       </Grid>
     </Container>
   );

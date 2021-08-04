@@ -23,7 +23,7 @@ export const questionSlice = createSlice({
       const questionData = action.payload[0];
       const { value, question, answer } = questionData;
 
-      state.question = { text: question, value };
+      state.question = { text: question, value: value || 300 };
       state.answer = answer;
     },
     playerResponded: (state, action) => {
