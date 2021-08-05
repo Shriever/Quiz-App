@@ -2,11 +2,11 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import NextQuestionButton from "./NextQuestionButton";
 import { useSelector } from "react-redux";
-import { useGetNewQuoteQuery } from "../services/quote";
 
-const Quote = () => {
+const Quote = ({ refetch, newQuoteRes }) => {
   const { isCorrectAnswer } = useSelector(state => state.question);
-  const { data, isLoading } = useGetNewQuoteQuery();
+  const { data, isLoading } = newQuoteRes;
+
   if (isLoading) return <p>loading...</p>;
 
   if (isCorrectAnswer) {
@@ -29,7 +29,7 @@ const Quote = () => {
         </Grid>
 
         <Grid item>
-          <NextQuestionButton />
+          <NextQuestionButton refetch={refetch} />
         </Grid>
       </Grid>
     );
@@ -41,7 +41,7 @@ const Quote = () => {
         <Typography>oops, no chuck norris for you :(</Typography>
       </Grid>
       <Grid item>
-        <NextQuestionButton />
+        <NextQuestionButton refetch={refetch} />
       </Grid>
     </Grid>
   );

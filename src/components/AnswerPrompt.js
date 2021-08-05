@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { playerResponded } from "../features/question/questionSlice";
 import { addQuestionValueToScore } from "../features/playerScore/playerScoreSlice";
 
-const AnswerPrompt = () => {
+const AnswerPrompt = ({ refetch, questionValue }) => {
   const dispatch = useDispatch();
 
   return (
@@ -20,8 +20,9 @@ const AnswerPrompt = () => {
           variant='contained'
           color='primary'
           onClick={() => {
+            refetch();
             dispatch(playerResponded(true));
-            dispatch(addQuestionValueToScore());
+            dispatch(addQuestionValueToScore(questionValue));
           }}
         >
           Yes

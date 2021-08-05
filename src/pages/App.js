@@ -14,7 +14,7 @@ import { useGetRandomQuestionAndAnswerQuery } from "../services/question";
 const App = () => {
   const classes = useStyles();
 
-  const { data, isLoading } = useGetRandomQuestionAndAnswerQuery();
+  const { data, isLoading, refetch } = useGetRandomQuestionAndAnswerQuery();
   if (isLoading) return <h2>loading...</h2>;
 
   const { value, answer, question } = data[0];
@@ -48,7 +48,7 @@ const App = () => {
           </Grid>
         </Grid>
 
-        <Footer />
+        <Footer refetch={refetch} questionValue={newQuestion.value} />
       </Grid>
     </Container>
   );

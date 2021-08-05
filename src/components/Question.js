@@ -1,10 +1,7 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
-// import { useSelector } from "react-redux";
 
-const Question = ({text, value}) => {
-  // const { text, value } = useSelector(state => state.question.question);
-
+const Question = ({ text, value }) => {
   return (
     <>
       <Typography variant='h4'>For {value} points:</Typography>
