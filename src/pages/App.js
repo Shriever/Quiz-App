@@ -49,6 +49,7 @@ const App = () => {
         </Grid>
 
         <Footer refetch={refetch} questionValue={newQuestion.value} />
+      
       </Grid>
     </Container>
   );

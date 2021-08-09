@@ -2,9 +2,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   score: {
-    marginBottom: '2rem',
+    marginBottom: "2rem",
   },
   answerContainer: {
+    borderTop: "0.3rem solid green",
     paddingTop: "6rem",
     textAlign: "center",
     backgroundColor: theme.palette.grey[300],
@@ -15,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   questionContainer: {
+    borderTop: "0.3rem solid green",
     backgroundColor: theme.palette.grey[300],
     borderRadius: "5px",
   },

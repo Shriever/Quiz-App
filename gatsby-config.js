@@ -3,5 +3,8 @@ module.exports = {
     siteUrl: "https://www.yourdomain.tld",
     title: "Quiz-App",
   },
-  plugins: ["gatsby-plugin-gatsby-cloud", "gatsby-plugin-react-helmet"],
+  plugins: [
+    "gatsby-plugin-gatsby-cloud",
+    "gatsby-plugin-react-helmet",
+  ],
 };
