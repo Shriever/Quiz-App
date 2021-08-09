@@ -7,4 +7,7 @@
 
 2.  **Tech**
 
-    The tech used for this project includes: ReactJS | Gatsby | React Helmet | Material UI
+    The tech used for this project includes: ReactJS | Gatsby | React Helmet | Material UI | Redux
+    
+    **Hosted Site URL** - 
+    https://quizapp.gatsbyjs.io/
